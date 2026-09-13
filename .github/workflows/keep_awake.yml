@@ -1,0 +1,24 @@
+name: Keep Streamlit Awake
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Multiple Dashboards
+        run: |
+          urls=(
+            "https://electric-mobility-h9z8tfzyc9tappwnuxqnvrt.streamlit.app/"
+            "https://emobility-energy-pmo-twin-jhpcmqugzfuh89d9nekoay.streamlit.app/"
+            "https://m5y35q4llz9jawbrp4gyuj.streamlit.app/"
+          )
+          
+          for url in "${urls[@]}"; do
+            curl -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" -sL "$url" > /dev/null
+            echo "Successfully pinged $url"
+            sleep 2
+          done
