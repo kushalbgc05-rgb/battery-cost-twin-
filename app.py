@@ -273,9 +273,9 @@ comparison_df["Variance (A - B)"] = comparison_df[f"{supA_name} ($/kWh)"] - comp
 formatted_df = comparison_df.style.format({f"{supA_name} ($/kWh)": "${:.2f}", f"{supB_name} ($/kWh)": "${:.2f}", "Variance (A - B)": "${:+.2f}"})
 st.dataframe(formatted_df, use_container_width=True, height=480)
 
-# --- METHODOLOGY & ACADEMIC PROVENANCE (DATA SOURCES) ---
+# --- DATA SOURCES ---
 st.markdown("<br>", unsafe_allow_html=True)
-with st.expander("📚 Academic & Industry Methodology Provenance (Data Sources)", expanded=False):
+with st.expander("Data Sources", expanded=False):
     st.markdown("""
     **1. Baseline Factory Macro-Splits & Format Scaling:**
     > Lechner, M., Kollenda, A., Bendzuck, K., Burmeister, J.K., Mahin, K., Keilhofer, J., Kemmer, L., Blaschke, M.J., Friedl, G., Daub, R. & Kwade, A. *"Cost modeling for the GWh-scale production of modern lithium-ion battery cells."* **Communications Engineering 3**, 155 (2024), Nature Portfolio. 
@@ -286,13 +286,13 @@ with st.expander("📚 Academic & Industry Methodology Provenance (Data Sources)
 
     **2. N-Tier Granular BOM & Raw Material De-Averaging:**
     > Nelson, P.A., Gallagher, K.G., et al. *"Battery Performance and Cost Modeling for Electric-Drive Vehicles (BatPaC v5.0)."* **Argonne National Laboratory** / US Department of Energy (2022).
-    > <a href="https://doi.org/10.2172/1877590" class="reference-link" target="_blank">DOI: 10.2172/1877590</a> | <a href="https://www.anl.gov/partnerships/batpac-battery-manufacturing-cost-estimation" class="reference-link" target="_blank">ANL BatPaC Software</a>
+    > <a href="https://doi.org/10.2172/1877590" class="reference-link" target="_blank">DOI: 10.2172/1877590</a>
     <br><span style="font-size: 0.85em; color: gray;"><i>(Validates the specific stoichiometric splits used for Lithium Salt, Cathode Active Materials (CAM), Anode precursors, Copper/Aluminum foils, and Casing Hardware).</i></span>
 
     <br>
 
-    **3. Closed-Loop Scrap Recovery & Process Energy:**
-    > Degen, F., Schmuch, R. et al. *"Energy consumption and cost modeling of battery production."* **Fraunhofer ISI**.
-    > <a href="https://www.isi.fraunhofer.de/en/themen/batterien.html" class="reference-link" target="_blank">Fraunhofer Battery Research Platform</a>
-    <br><span style="font-size: 0.85em; color: gray;"><i>(Validates the process energy variance assumptions and the algorithmic impact of closed-loop scrap recycling on raw material cost offsets).</i></span>
+    **3. Process Energy & Production Optimization:**
+    > Degen, F., Winter, M., Bendig, D. & Tübke, J. (Fraunhofer Research Institution for Battery Cell Production). *"Energy consumption of current and future production of lithium-ion and post lithium-ion battery cells."* **Nature Energy 8**, 1284–1295 (2023).
+    > <a href="https://doi.org/10.1038/s41560-023-01355-z" class="reference-link" target="_blank">DOI: 10.1038/s41560-023-01355-z</a>
+    <br><span style="font-size: 0.85em; color: gray;"><i>(Validates the process energy variance assumptions and energy demands across GWh-scale battery cell production).</i></span>
     """, unsafe_allow_html=True)
